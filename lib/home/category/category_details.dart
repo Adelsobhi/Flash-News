@@ -6,8 +6,9 @@ import 'package:flash_news/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CategoryDetails extends StatefulWidget {
+  final String searchText; // 👈 جديد
   CategoryModel categoryModel;
-  CategoryDetails({required this.categoryModel});
+  CategoryDetails({required this.categoryModel,this.searchText=''});
 
 
   @override
@@ -61,7 +62,11 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           }
           // todo: server=> success
           var sourcesList=snapshot.data!.sources!;
-           return SourceTabWidget(sourcesList: sourcesList);
+          return SourceTabWidget(
+            searchText:widget.searchText ,
+            sourcesList: sourcesList,
+
+          );;
 
         },
     );

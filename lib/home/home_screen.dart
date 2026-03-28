@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String searchText = '';
   bool isSearching = false; // حالة البحث
   TextEditingController searchController = TextEditingController();
   CategoryModel? categorySelect;
@@ -38,7 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           style: TextStyle(color:Theme.of(context).indicatorColor , fontSize: 18),
           onChanged: (value) {
-            // هنا ممكن تضيف فلترة الأخبار حسب النص
+            print("SEARCH: $value"); // 👈 مهم
+            setState(() {
+              searchText = value;
+            });
           },
         )
             : Text(
@@ -70,8 +74,13 @@ class _HomeScreenState extends State<HomeScreen> {
       body: categorySelect == null
           ? CategoryFragment(
         onViewAllPressed: onViewAllPressed,
+        searchText: searchController.text, // <-- تمرير النص
+
       )
-          : CategoryDetails(categoryModel: categorySelect!),
+          : CategoryDetails(categoryModel: categorySelect!,
+          searchText: searchController.text, // 👈 لازم هنا
+      ),
+
     );
   }
 

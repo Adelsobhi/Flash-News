@@ -7,10 +7,18 @@ import '../../model/category_model.dart';
 class CategoryFragment extends StatelessWidget {
   List<CategoryModel> categoriesList=[];
   Function onViewAllPressed;
-  CategoryFragment({required this.onViewAllPressed});
+  final String searchText; // <-- جديد
+  CategoryFragment({required this.onViewAllPressed,this.searchText=''});
   @override
   Widget build(BuildContext context) {
-    categoriesList=CategoryModel.getCategoriesList(false);
+    List<CategoryModel> allCategories = CategoryModel.getCategoriesList(false);
+    List<CategoryModel> categoriesList = allCategories;    // فلترة حسب النص لو فيه نص
+
+    if (searchText.isNotEmpty) {
+      categoriesList = categoriesList
+          .where((cat) => cat.title.toLowerCase().contains(searchText.toLowerCase()))
+          .toList();
+    }
     var height =MediaQuery.of(context).size.height;
     var width =MediaQuery.of(context).size.width;
     return Container(

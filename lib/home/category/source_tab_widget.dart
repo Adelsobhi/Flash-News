@@ -7,8 +7,12 @@ import 'package:flutter/material.dart';
 
 class SourceTabWidget extends StatefulWidget {
 List<Source>sourcesList;
-SourceTabWidget({required this.sourcesList});
+final String searchText;
 
+SourceTabWidget({
+  required this.sourcesList,
+  this.searchText = '', // 👈 مهم
+});
   @override
   State<SourceTabWidget> createState() => _SourceTabWidgetState();
 }
@@ -49,6 +53,9 @@ class _SourceTabWidgetState extends State<SourceTabWidget> {
                   ? Center(child: CircularProgressIndicator())
                   : NewsWidget(
                 source: widget.sourcesList[selectedIndex],
+                searchText: widget.searchText, // 👈 هنا
+
+
               ),
             )          ],
         )) ;

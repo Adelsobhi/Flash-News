@@ -12,7 +12,9 @@ import 'news_item.dart';
 
 class NewsWidget extends StatefulWidget {
   final Source source;
-  NewsWidget({required this.source});
+  final String searchText; // 👈 ضيف ده
+
+  NewsWidget({required this.source,this.searchText=''});
 
   @override
   State<NewsWidget> createState() => _NewsWidgetState();
@@ -132,6 +134,20 @@ class _NewsWidgetState extends State<NewsWidget> {
         }
 
         var newsList = newsResponse.articles ?? [];
+        if (widget.searchText.isNotEmpty) {
+          newsList = newsList
+              .where((news) =>
+          (news.title ?? '').toLowerCase().contains(widget.searchText.toLowerCase()) ||
+              (news.description ?? '').toLowerCase().contains(widget.searchText.toLowerCase()) ||
+              (news.content ?? '').toLowerCase().contains(widget.searchText.toLowerCase()))
+              .toList();
+        }
+
+        if (newsList.isEmpty) {
+          return Center(
+            child: Text("No news matches your search.", style: Theme.of(context).textTheme.headlineMedium),
+          );
+        }
         if (newsList.isEmpty) {
           return Center(
             child: Container(
