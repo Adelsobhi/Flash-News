@@ -1,16 +1,36 @@
-# flash_news
+# Flash News
 
-A new Flutter project.
+Modern Flutter News Application
 
-## Getting Started
+## About The Project
+Flash News is a cross platform news application developed using Flutter and Dart
+The application allows users to browse different news categories search for articles and read the latest news from multiple sources using REST APIs
 
-This project is a starting point for a Flutter application.
+## Features
+Splash Screen
+Login And Register System
+Browse Different News Categories
+Multiple News Sources
+News Details Screen
+Search For News Articles
+Responsive And Modern UI Design
+REST APIs Integration
+Cross Platform Support Android And iOS
 
-A few resources to get you started if this is your first Flutter project:
+## Technologies Used
+Flutter
+Dart
+REST APIs
+MVVM Architecture
+Provider
+BLoC
+Git and GitHub
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Developer
+Adel Sobhi Mohamed
+Flutter Developer
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+
+### App Screens
+![App Screens](assets/images/screens_app.png)
